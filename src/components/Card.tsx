@@ -18,12 +18,36 @@ const Card: React.FC<any> = ({
   });
 
   useEffect(() => {
-    console.log("Flipped Indexes Changed");
-  }, [flippedIndexes]);
+    if (flippedIndexes[2] === true && flippedIndexes.indexOf(id) > -1) {
+      setTimeout(() => {
+        set((state) => !state);
+        setFlippedCount(flippedCount + 1);
+        setFlippedIndexes([]);
+      }, 1000);
+    } else if (flippedIndexes[2] === false && id === 0) {
+      setFlippedCount(flippedCount + 1);
+      setFlippedIndexes([]);
+    }
+  }, [flippedCount, flippedIndexes, id, setFlippedCount, setFlippedIndexes]);
 
   const onCardClick = () => {
-    console.log("Card Clicked");
-    set((state) => state);
+    if (!game[id].flipped && flippedCount % 3 === 0) {
+      set((state) => !state);
+      setFlippedCount(flippedCount + 1);
+      const newIndexes = [...flippedIndexes];
+      newIndexes.push(id);
+      setFlippedIndexes(newIndexes);
+    } else if (
+      flippedCount % 3 === 1 &&
+      !game[id].flipped &&
+      flippedIndexes.indexOf(id) < 0
+    ) {
+      set((state) => !state);
+      setFlippedCount(flippedCount + 1);
+      const newIndexes = [...flippedIndexes];
+      newIndexes.push(id);
+      setFlippedIndexes(newIndexes);
+    }
   };
 
   return (
