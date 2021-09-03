@@ -7,5 +7,6 @@
 - Typescript
 - React.JS
 - SCSS
+- React-Spring
 
 ---
