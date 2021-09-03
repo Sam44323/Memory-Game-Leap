@@ -6,7 +6,7 @@
 
 - Typescript
 - React.JS
-- SCSS
 - React-Flip
+- SCSS
 
 ---
