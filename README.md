@@ -10,3 +10,33 @@
 - SCSS
 
 ---
+
+### After cloning the repo, run the following commands
+
+---
+
+### Installing the packages
+
+---
+
+```bash
+yarn start
+```
+
+### Running the dev server
+
+---
+
+```bash
+yarn start
+```
+
+### Creating the build script
+
+---
+
+```bash
+yarn build
+```
+
+---
