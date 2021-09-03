@@ -1,7 +1,13 @@
 import React from "react";
-import "./App.scss";
+import styles from "./App.module.scss";
+import Card from "./components/Card";
 
 const CONTENT = ["A", "B", "C", "D", "E", "F", "G", "H"]; // a constant for initial content
+
+/**
+ *
+ * @returns the root component
+ */
 
 const App: React.FC = () => {
   // storing duplicates of alphabets from A...H in an array
@@ -33,11 +39,7 @@ const App: React.FC = () => {
     setCurrentContent([...shuffleArray(CONTENT), ...shuffleArray(CONTENT)]);
   }, []);
 
-  return (
-    <div>
-      <h3>App</h3>
-    </div>
-  );
+  return <div className={styles.App}></div>;
 };
 
 export default App;
