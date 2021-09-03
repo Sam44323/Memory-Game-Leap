@@ -7,6 +7,6 @@
 - Typescript
 - React.JS
 - SCSS
-- React-Spring
+- React-Flip
 
 ---
