@@ -4,15 +4,17 @@ import ReactCardFlip from "react-card-flip";
 
 const Card: React.FC<{
   content: string;
+  index: number;
+  flipState: boolean;
+  flipHandler: (index: number) => void;
 }> = (props) => {
-  const [flip, setFlip] = React.useState(false);
   return (
     <div
       className={styles.CardContainer}
-      onClick={() => setFlip((prev) => !prev)}
+      onClick={() => props.flipHandler(props.index)}
     >
       <ReactCardFlip
-        isFlipped={flip}
+        isFlipped={!props.flipState}
         flipDirection="horizontal"
         flipSpeedFrontToBack={0.6}
         containerClassName={styles.CardClass}

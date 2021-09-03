@@ -12,6 +12,7 @@ const CONTENT = ["A", "B", "C", "D", "E", "F", "G", "H"]; // a constant for init
 const App: React.FC = () => {
   // storing duplicates of alphabets from A...H in an array
   const [currentContent, setCurrentContent] = React.useState<string[]>([]);
+  const [currentFlips, setCurrentFlips] = React.useState<number[]>([]); // for storing the current flip cards indexes
 
   /**
    *
@@ -39,6 +40,17 @@ const App: React.FC = () => {
     setCurrentContent([...shuffleArray(CONTENT), ...shuffleArray(CONTENT)]);
   }, []);
 
+  const flipHandler = React.useCallback(
+    (index: number) => {
+      if (currentFlips.includes(index)) {
+        return;
+      }
+      const data = [...currentFlips];
+      data.push(index);
+      setCurrentFlips(data);
+    },
+    [currentFlips]
+  );
   return (
     <div className={styles.App}>
       <div className={styles.TopContainer}>
@@ -54,7 +66,13 @@ const App: React.FC = () => {
       </div>
       <div className={styles.CardContainer}>
         {currentContent.map((item, index) => (
-          <Card key={index} content={item} />
+          <Card
+            key={index}
+            content={item}
+            index={index}
+            flipState={currentFlips.includes(index)}
+            flipHandler={flipHandler}
+          />
         ))}
       </div>
     </div>
