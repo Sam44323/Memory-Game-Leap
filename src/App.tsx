@@ -72,15 +72,10 @@ const App: React.FC = () => {
         const currFlipsTempData = [...currentFlips];
         currFlipsTempData.push(content);
         setCurrentFlips(currFlipsTempData);
-        setCurrentScore((prev) =>
-          prev + Attempts === 1
-            ? 3
-            : Attempts === 2
-            ? 2
-            : Attempts === 3
-            ? 1
-            : 0
-        );
+        const score =
+          currentScore +
+          (Attempts === 1 ? 3 : Attempts === 2 ? 2 : Attempts === 3 ? 1 : 0);
+        setCurrentScore(score);
         Attempts = 0;
       } else {
         tempContentValue = {
@@ -112,9 +107,9 @@ const App: React.FC = () => {
       data.push(index);
       setTempFlips(data);
     },
-    [tempFlips, currentFlips]
+    [tempFlips, currentFlips, currentScore]
   );
-  console.log(currentScore);
+  console.log(Attempts);
   return (
     <div className={styles.App}>
       <div className={styles.TopContainer}>
