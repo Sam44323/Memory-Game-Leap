@@ -39,7 +39,26 @@ const App: React.FC = () => {
     setCurrentContent([...shuffleArray(CONTENT), ...shuffleArray(CONTENT)]);
   }, []);
 
-  return <div className={styles.App}></div>;
+  return (
+    <div className={styles.App}>
+      <div className={styles.TopContainer}>
+        <div className={styles.HeadingData}>
+          <p>Memory Game (Cards)</p>
+          <p>High Score: 0</p>
+        </div>
+        <div className={styles.FlexContainer}>
+          <button>Start Game</button>
+          <button>Restart Game</button>
+        </div>
+        <hr />
+      </div>
+      <div className={styles.CardContainer}>
+        {currentContent.map((item, index) => (
+          <Card key={index} content={item} />
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default App;

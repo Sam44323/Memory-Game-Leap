@@ -1,0 +1,24 @@
+.CardContainer {
+  color: #000000;
+  &:hover {
+    cursor: pointer;
+  }
+  .CardClass {
+    display: flex;
+    flex-direction: column;
+    height: 240px;
+    width: 240px;
+    border-radius: 17px;
+    background-color: #ccc;
+    border: 1px solid black;
+    position: relative;
+    .front {
+      position: absolute;
+      left: 40%;
+      right: 0;
+      top: 31%;
+      bottom: 0;
+      font-size: 74px;
+    }
+  }
+}
