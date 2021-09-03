@@ -58,4 +58,10 @@
       border: 1px solid #ccc;
     }
   }
+  .CardContainer {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(4, 240px);
+    gap: 18px;
+  }
 }

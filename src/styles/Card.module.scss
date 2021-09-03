@@ -1,24 +1,34 @@
 .CardContainer {
-  color: #000000;
+  color: #fff;
+  width: fit-content;
   &:hover {
     cursor: pointer;
   }
   .CardClass {
     display: flex;
     flex-direction: column;
-    height: 240px;
-    width: 240px;
     border-radius: 17px;
-    background-color: #ccc;
     border: 1px solid black;
     position: relative;
     .front {
-      position: absolute;
-      left: 40%;
-      right: 0;
-      top: 31%;
-      bottom: 0;
-      font-size: 74px;
+      height: 240px;
+      width: 240px;
+      border-radius: 10px;
+      background-color: salmon;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      p {
+        font-size: 7rem;
+        font-weight: 100px;
+      }
+    }
+    .back {
+      height: 240px;
+      width: 240px;
+      background-color: white;
+      border-radius: 10px;
     }
   }
 }
