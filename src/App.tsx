@@ -54,7 +54,6 @@ const App: React.FC = () => {
 
   const restartHandler = () => {
     setCurrentFlips([]);
-    setCurrentScore(0);
     setTempFlips([]);
     tempContentValue = {} as any;
     Attempts = 0;
