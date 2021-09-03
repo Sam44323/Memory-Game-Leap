@@ -6,12 +6,12 @@ const Card: React.FC<{
   content: string;
   index: number;
   flipState: boolean;
-  flipHandler: (index: number) => void;
+  flipHandler: (index: number, content: string) => void;
 }> = (props) => {
   return (
     <div
       className={styles.CardContainer}
-      onClick={() => props.flipHandler(props.index)}
+      onClick={() => props.flipHandler(props.index, props.content)}
     >
       <ReactCardFlip
         isFlipped={!props.flipState}
