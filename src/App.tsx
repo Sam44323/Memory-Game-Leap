@@ -9,7 +9,8 @@ let tempContentValue: {
 } = {} as any; // storing the temp content value based on flipping
 let Attempts = 0; // storing the count of attempts;
 let flipperCounter = 0; // flipper counter for counting the number of current flipped cards
-let matchCount = 0;
+let matchCount = 0; // storing the current status of the match
+let matchCompleteCount = 0; // storing total number of matchers played in a go
 
 /**
  *
@@ -53,6 +54,10 @@ const App: React.FC = () => {
     };
   }, []);
 
+  /**
+   *
+   * @task sets the states to their initial values
+   */
   const restartHandler = () => {
     if (matchCount !== 8) {
       alert("Complete the current game before restarting!");
@@ -60,9 +65,11 @@ const App: React.FC = () => {
     }
     setCurrentFlips([]);
     setTempFlips([]);
+    matchCompleteCount++;
     tempContentValue = {} as any;
     Attempts = 0;
     flipperCounter = 0;
+    matchCount = 0;
     setTimeout(() => {
       setCurrentContent([...shuffleArray(CONTENT), ...shuffleArray(CONTENT)]);
     }, 1500);
@@ -87,7 +94,6 @@ const App: React.FC = () => {
           index,
           value: content,
         };
-        Attempts++;
         flipperCounter++;
       }
       /**
@@ -101,6 +107,7 @@ const App: React.FC = () => {
        * tempFlips > 2 then un-flip the cards that were already flipped
        */
       if (tempFlips.length === 1) {
+        Attempts++;
         setTimeout(() => {
           data.length = 0;
           setTempFlips(data);
@@ -114,7 +121,7 @@ const App: React.FC = () => {
     },
     [tempFlips, currentFlips, currentScore]
   );
-  console.log(Attempts);
+
   return (
     <div className={styles.App}>
       <div className={styles.TopContainer}>
@@ -124,6 +131,8 @@ const App: React.FC = () => {
             High Score: {currentScore} (1 Attempt: 3, 2 Attempts: 2, 3 Attempts:
             1, More than 3 Attempts: 0)
           </p>
+          <p>Attempts: {Attempts}</p>
+          <p>Total number of matcher: {matchCompleteCount}</p>
         </div>
         <div className={styles.FlexContainer}>
           <button onClick={() => setStart(true)}>Start Game</button>
