@@ -9,6 +9,7 @@ let tempContentValue: {
 } = {} as any; // storing the temp content value based on flipping
 let Attempts = 0; // storing the count of attempts;
 let flipperCounter = 0; // flipper counter for counting the number of current flipped cards
+let matchCount = 0;
 
 /**
  *
@@ -53,6 +54,10 @@ const App: React.FC = () => {
   }, []);
 
   const restartHandler = () => {
+    if (matchCount !== 8) {
+      alert("Complete the current game before restarting!");
+      return;
+    }
     setCurrentFlips([]);
     setTempFlips([]);
     tempContentValue = {} as any;
@@ -76,6 +81,7 @@ const App: React.FC = () => {
           (Attempts === 1 ? 3 : Attempts === 2 ? 2 : Attempts === 3 ? 1 : 0);
         setCurrentScore(score);
         Attempts = 0;
+        matchCount++;
       } else {
         tempContentValue = {
           index,
