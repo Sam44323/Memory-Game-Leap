@@ -47,6 +47,9 @@ const App: React.FC = () => {
 
   React.useEffect(() => {
     setCurrentContent([...shuffleArray(CONTENT), ...shuffleArray(CONTENT)]);
+    window.onbeforeunload = (e) => {
+      return true;
+    };
   }, []);
 
   const restartHandler = () => {
